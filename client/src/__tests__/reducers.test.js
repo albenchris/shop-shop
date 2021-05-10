@@ -138,4 +138,19 @@ test('CLEAR_CART', () => {
     
     expect(initialState.cart.length).toBe(2);
 });
+
+test('TOGGLE_CART', () => {
+    let newState1 = reducer(initialState, {
+        type: TOGGLE_CART
+    });
+
+    expect(newState1.cartOpen).toBe(true);
+    expect(initialState.cartOpen).toBe(false);
+
+    let newState2 = reducer(newState1, {
+        type: TOGGLE_CART
+    });
+
+    expect(newState2.cartOpen).toBe(false);
+});
 // ================== CART TESTS END ===============================================================
