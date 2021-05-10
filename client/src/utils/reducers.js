@@ -2,11 +2,18 @@ import { useReducer } from 'react';
 import {
     UPDATE_PRODUCTS,
     UPDATE_CATEGORIES,
-    UPDATE_CURRENT_CATEGORY
+    UPDATE_CURRENT_CATEGORY,
+    ADD_TO_CART,
+    ADD_MULTIPLE_TO_CART,
+    REMOVE_FROM_CART,
+    UPDATE_CART_QUANTITY,
+    CLEAR_CART,
+    TOGGLE_CART
 } from './actions';
 
 export const reducer = (state, action) => {
     switch (action.type) {
+        // ========== PRODUCT/CATEGORY CASES START =============================================================================================
         // if action type value is the value of `UPDATE_PRODUCTS`, return a new state object with an updated products array
         case UPDATE_PRODUCTS:
             return {
@@ -27,6 +34,17 @@ export const reducer = (state, action) => {
                 ...state,
                 currentCategory: action.currentCategory
             };
+        // ========= PRODUCT/CATEGORY CASES END ===============================================================================================
+
+        // ======== CART CASES START ============================================================================================================
+        case ADD_TO_CART:
+            return {
+                ...state,
+                cartOpen: true,
+                cart: [...state.cart, action.product]
+            };
+
+        // ========= CART CASES END =============================================================================================================
 
         // if it's none of these actions, do not update the state at all and keep things the same!
         default:
