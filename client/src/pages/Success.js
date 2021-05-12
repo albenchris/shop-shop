@@ -25,6 +25,10 @@ function Success() {
         saveOrder();
     }, [addOrder]);
 
+    setTimeout(() => {
+        window.location.assign('/');
+    }, 3000);
+
     return (
         <div>
             <Jumbotron>
